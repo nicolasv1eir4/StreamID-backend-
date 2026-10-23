@@ -1,0 +1,165 @@
+
+index.html : <!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Stream ID - Completo</title>
+    <!-- Ligação ao ficheiro CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Ligação ao ficheiro JavaScript -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Tela 1: Inicio -->
+        <div id="screen-inicio" class="screen active">
+            <div class="center-content">
+                <div class="logo">
+                    <div class="play-icon"></div>
+                    <div class="logo-text">STREAM ID</div>
+                </div>
+                <button type="button" class="btn-iniciar" id="btn-iniciar">Iniciar</button>
+            </div>
+        </div>
+
+        <!-- Tela 2: Delay (Carregamento) -->
+        <div id="screen-delay" class="screen">
+            <div class="logo">
+                <div class="play-icon"></div>
+                <div class="logo-text">STREAM ID</div>
+            </div>
+        </div>
+
+        <!-- Tela 3: Login -->
+        <div id="screen-login" class="screen">
+            <div class="card">
+                
+                <div class="logo small">
+                    <div class="play-icon"></div>
+                    <div class="logo-text">STREAM ID</div>
+                </div>
+
+                <form id="form-login" class="form-container">
+                    <div class="input-group">
+                        <input type="email" placeholder="👤 Email:" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="🔒 Senha:" required>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="lembre-login">
+                        <label for="lembre-login">Lembre de mim</label>
+                    </div>
+
+                    <button type="submit" class="btn-outline">Login</button>
+                    <button type="button" class="btn-outline small" id="btn-go-cadastro">Cadastrar-se</button>
+                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tela 4: Cadastro -->
+        <div id="screen-cadastro" class="screen">
+            <div class="card">
+                
+                <div class="logo micro">
+                    <div class="play-icon"></div>
+                    <div class="logo-text">STREAM ID</div>
+                </div>
+
+                <form id="form-cadastro" class="form-container">
+                    <div class="input-group">
+                        <input type="text" placeholder="👤 Nome:" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" placeholder="✉️ Email:" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="🔒 Senha:" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="🔒 Confirme a senha:" required>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="lembre-cadastro">
+                        <label for="lembre-cadastro">Lembre de mim</label>
+                    </div>
+
+                    <button type="submit" class="btn-outline">Cadastrar-se</button>
+                    <a href="#" class="forgot-password" id="link-voltar-login" style="margin-top: 10px; font-size: 11px;">Voltar para o Login</a>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tela 5: Home (Nova) -->
+        <div id="screen-home" class="screen layout-app">
+            <!-- Menu Lateral -->
+            <aside class="sidebar">
+                <div class="sidebar-logo">
+                    <div class="play-icon-white"></div>
+                    <span class="logo-text-small">STREAM ID</span>
+                </div>
+                
+                <nav class="sidebar-nav">
+                    <!-- Ícone Upload -->
+                    <button class="nav-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3aa6eb" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    </button>
+                    <!-- Ícone Lista -->
+                    <button class="nav-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    </button>
+                    <!-- Ícone Play -->
+                    <button class="nav-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Área de Conteúdo Principal -->
+            <main class="main-content">
+                <h1 class="page-title">Home</h1>
+                
+                <div class="upload-container">
+                    <h2 class="upload-title">Faça o Upload da sua mídia</h2>
+                    
+                    <div class="dropzone">
+                        <!-- Ícone de Ficheiro Upload -->
+                        <svg class="file-icon" width="60" height="80" viewBox="0 0 24 24" fill="none" stroke="#3aa6eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="12" y1="18" x2="12" y2="12"></line>
+                            <polyline points="9 15 12 12 15 15"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="thumbnails-row">
+                        <div class="thumbnail">
+                            <button class="remove-btn">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3aa6eb" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            </button>
+                        </div>
+                        <div class="thumbnail">
+                            <button class="remove-btn">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3aa6eb" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            </button>
+                        </div>
+                        <div class="thumbnail">
+                            <button class="remove-btn">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3aa6eb" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    </div>
+
+</body>
+</html> 

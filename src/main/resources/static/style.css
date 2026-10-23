@@ -1,0 +1,409 @@
+ /* =========================================
+   1. Reset e Configurações Gerais
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1e87c5;
+    overflow: hidden; /* Evita barras de scroll indesejadas na janela */
+}
+
+/* Contentor principal a ocupar 100% da janela */
+.app-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* =========================================
+   2. Estrutura e Transição das Telas
+   ========================================= */
+.screen {
+    display: none; /* Ocultas por padrão */
+    background: radial-gradient(circle, #5bcdf1 0%, #1e87c5 100%);
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Mostra apenas a tela ativa */
+.screen.active {
+    display: flex;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: scale(0.98); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================================
+   3. Logótipo Stream ID (Atualizado para igualar a imagem)
+   ========================================= */
+.logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinhamento modificado para encaixar o texto */
+    margin-bottom: 20px;
+    width: 130px; /* Largura base do logótipo */
+    height: 130px;
+}
+
+.play-icon {
+    width: 0;
+    height: 0;
+    border-top: 65px solid transparent;
+    border-bottom: 65px solid transparent;
+    border-left: 110px solid #289bf0;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.15));
+}
+
+.logo-text {
+    position: absolute;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    left: 12px; /* Margem esquerda para afastar da borda reta do triângulo */
+    text-align: left;
+    line-height: 1.2;
+    width: 80px; /* Esta largura força a quebra de linha natural (STREAM em cima, ID em baixo) */
+    word-wrap: break-word;
+}
+
+/* Variações de tamanho do Logótipo */
+.logo.small {
+    transform: scale(0.6);
+    margin-bottom: 10px;
+}
+
+.logo.micro {
+    transform: scale(0.4);
+    margin-bottom: 0;
+}
+
+/* =========================================
+   4. Botões e Cartões (Login / Cadastro / Início)
+   ========================================= */
+.btn-iniciar {
+    background-color: #ffffff;
+    color: #3aa6eb;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-iniciar:hover {
+    transform: scale(1.05);
+    background-color: #f8f8f8;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px 30px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Formulários */
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    width: 100%;
+    background-color: #3aa6eb;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    color: white;
+    font-size: 13px;
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: #d1ebfc;
+}
+
+.input-group input:focus {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 10px;
+    color: #666;
+}
+
+.checkbox-group input {
+    margin-right: 5px;
+    accent-color: #3aa6eb;
+    cursor: pointer;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #3aa6eb;
+    border: 1px solid #3aa6eb;
+    border-radius: 20px;
+    padding: 8px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 8px;
+    width: max-content;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-outline:hover {
+    background-color: #3aa6eb;
+    color: white;
+}
+
+.btn-outline.small {
+    padding: 4px 15px;
+    font-size: 11px;
+}
+
+.forgot-password {
+    color: #999;
+    font-size: 9px;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+    color: #3aa6eb;
+}
+
+/* =========================================
+   5. Layout do Ecrã Home (Menu Lateral + Upload)
+   ========================================= */
+.screen.layout-app {
+    background: #ffffff;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+/* Menu Lateral (Sidebar) */
+.sidebar {
+    background-color: #3aa6eb;
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    flex-shrink: 0;
+}
+
+.sidebar-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    position: relative; /* Adicionado para suportar o texto no interior */
+}
+
+/* Adaptação do triângulo do menu lateral para manter o mesmo estilo */
+.play-icon-white {
+    width: 0;
+    height: 0;
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-left: 36px solid #ffffff;
+    margin-bottom: 5px;
+}
+
+/* Adaptação do texto do menu lateral */
+.logo-text-small {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-60%);
+    color: #3aa6eb; /* Azul para se destacar no interior do triângulo branco */
+    font-size: 7px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: left;
+    width: 30px; /* Força quebra de linha */
+    word-wrap: break-word;
+    line-height: 1.1;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    align-items: center;
+}
+
+.nav-item {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.nav-item:nth-child(1) {
+    background-color: #ffffff;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-item:nth-child(1):hover {
+    background-color: #e0e0e0;
+}
+
+/* Área de Conteúdo Principal */
+.main-content {
+    flex-grow: 1;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.page-title {
+    color: #3aa6eb;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Caixa de Upload */
+.upload-container {
+    border: 1px solid #c7e5f8;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(58, 166, 235, 0.1);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.upload-title {
+    color: #3aa6eb;
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.dropzone {
+    border: 2px dashed #b5dbf5;
+    border-radius: 8px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    margin-bottom: 15px;
+    background-color: #f7fcff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.dropzone:hover {
+    background-color: #e6f4fd;
+}
+
+/* Miniaturas na parte inferior */
+.thumbnails-row {
+    display: flex;
+    gap: 15px;
+}
+
+.thumbnail {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #c7e5f8;
+    border-radius: 8px;
+    background-color: #ffffff;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.remove-btn {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: #ffffff;
+    border: 1px solid #c7e5f8;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.thumbnails-row { flex-wrap: wrap; }
+
+.thumbnail { display: flex; align-items: center; justify-content: center; font-size: 22px; }
+
+.thumbnail img,
+.thumbnail video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.dropzone.arrastando { background-color: #d4ecfb; border-color: #3aa6eb; }
